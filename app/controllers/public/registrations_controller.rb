@@ -5,8 +5,19 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
 def configure_sign_up_params
-  devise_parameter_sanitizer.permit(:sign_up, keys:[:name])
+  devise_parameter_sanitizer.permit(:sign_up, keys:[:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :address, :telephone_number, :is_active])
 end
+
+def after_sign_in_path_for(resource)
+    case resource
+    when Admin
+      admin_path
+    when Customer
+      root_path
+    else
+      root_path
+    end
+  end
 
   # GET /resource/sign_up
   # def new

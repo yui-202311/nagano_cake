@@ -7,6 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-  email: webcamp,
+  email: "web@camp.com",
   password: dmm202311
 )
