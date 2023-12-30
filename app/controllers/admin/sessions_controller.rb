@@ -1,8 +1,16 @@
 # frozen_string_literal: true
 
 class Admin::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
+  before_action :configure_sign_in_params, only: [:create]
 
+  private
+  
+  def customer_state
+    customer = Customer.find_by(email: params[:customer][:email])
+    return if customer.nil?
+    return unless customer.valid_password?(params[:customer][:password])
+  end
+  
   # GET /resource/sign_in
   # def new
   #   super
