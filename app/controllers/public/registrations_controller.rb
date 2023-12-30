@@ -17,8 +17,17 @@ def after_sign_in_path_for(resource)
     else
       root_path
     end
-  end
+end
 
+def edit
+  @customer = Customer.find(params[:id])
+end
+
+def update
+  @customer = Customer.find(params[:id])
+  @customer.update(status: false)
+  redirect_to customer_path(@customer.id)
+end
   # GET /resource/sign_up
   # def new
   #   super
