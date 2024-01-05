@@ -1,17 +1,34 @@
 Rails.application.routes.draw do
-  root to: 'home#top'
-  get "home/about"=> "home#about", as: "about"
+
+  
+  namespace :admin do
+    root to: 'homes#top'
+    resources :items, only: [:new, :create, :edit, :show, :index, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:show]
+  end
+  
+  namespace :public do
+    root to: 'homes#top'
+    get "homes/about"=> "homes#about", as: "about"
+    resources :items, only: [:show, :index]
+    resources :customers, only: [:show, :edit, :update, :with_drawal, :unsubscribe]
+    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+    resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
+  end
 
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
 
+
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
 
-  resources :items, only: [:new, :create, :edit, :show, :index]
+  namespace :admin do
+  end
 
   devise_for :users
 

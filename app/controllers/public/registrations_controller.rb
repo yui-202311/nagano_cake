@@ -28,6 +28,7 @@ def update
   @customer.update(status: false)
   redirect_to customer_path(@customer.id)
 end
+
   # GET /resource/sign_up
   # def new
   #   super
