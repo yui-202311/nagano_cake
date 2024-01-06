@@ -8,5 +8,5 @@
 
 Admin.create!(
   email: "web@camp.com",
-  password: dmm202311
+  password: "dmm202311"
 )
