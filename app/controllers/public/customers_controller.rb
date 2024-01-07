@@ -9,7 +9,7 @@ class Public::CustomersController < ApplicationController
   def update
   end
 
-  def with_drawal
+  def withdrawal
   end
 
   def unsubscribe
