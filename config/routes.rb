@@ -5,17 +5,25 @@ Rails.application.routes.draw do
   get "admin/homes/top" => "admin/homes#top", as: "top"
   
   namespace :admin do
-    resources :items, only: [:new, :create, :edit, :show, :index, :update]
+    resources :items, except: [:destroy]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show]
   end
+   
+    get "homes/about" => "homes#about", as: "about"
   
   namespace :public do
-    get "homes/about"=> "homes#about", as: "about"
     resources :items, only: [:show, :index]
-    resources :customers, only: [:show, :edit, :update, :withdrawal, :unsubscribe]
-    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
-    resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
+    get "customers/mypage" => "customers#show"
+    get "customers/information/edit" => "customers#edit"
+    patch "customers/information" => "customers#update"
+    get "customers/withdrawal" => "customers#withdrawal"
+    patch "customers/unsubscribe" => "customers#unsubscribe"
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    get "cart_items/destroy_all" => "cart_items#destroy_all"
+    resources :orders, only: [:new, :create, :index, :show]
+    post "orders/confirm" => "orders#confirm"
+    get "orders/complete" => "orders#complete"
   end
 
   devise_for :customers, skip: [:passwords], controllers: {
