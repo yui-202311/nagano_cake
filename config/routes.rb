@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
-  
+
   root to: 'public/homes#top'
-  
+
   get "admin/homes/top" => "admin/homes#top", as: "top"
-  
+
   namespace :admin do
-    resources :items, except: [:destroy]
+    resources :items, only: [:new, :create, :index, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show]
   end
-   
+
     get "homes/about" => "homes#about", as: "about"
-  
+
   namespace :public do
     resources :items, only: [:show, :index]
     get "customers/mypage" => "customers#show"

@@ -1,5 +1,32 @@
 <h3>商品新規登録</h3>
 
+  <%= form_with model: @item, url: admin_items_path do |f| %>
 
+  <table>
+    <tbody>
+      <tr>
+        <td>商品画像</td>
+        <td><%= f.file_field :image, accept: "image*/" %></td>
+      </tr>
+      <tr>
+        <td>商品名</td>
+        <td><%= f.text_field :name, class: "form-control", placeholder: "商品名" %></td>
+      </tr>
+      <tr>
+        <td>商品説明</td>
+        <td><%= f.text_area :introduction, class: "form-control", size: "30x10", placeholder: "ここに説明文を記述します" %></td>
+      </tr>
+      <tr>
+        <td>税抜価格</td>
+        <td><%= f.text_field :price, class: "form-control", placeholder: "1000" %>円</td>
+      </tr>
+      <tr>
+        <td>販売ステータス</td>
+        <td><%= f.radio_button :status, :value %><%= f.label :status, "販売中" %>
+        <%= f.radio_button :status, :value %><%= f.label :status, "販売停止中" %></td>
+      </tr>
+    </tbody>
+  </table>
+    <%= f.submit '新規登録', class: 'btn btn-success' %>
+  <% end %>
 
-c
