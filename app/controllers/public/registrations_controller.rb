@@ -24,9 +24,7 @@ def edit
 end
 
 def update
-  @customer = Customer.find(params[:id])
-  @customer.update(status: false)
-  redirect_to customer_path(@customer.id)
+  
 end
 
   # GET /resource/sign_up
