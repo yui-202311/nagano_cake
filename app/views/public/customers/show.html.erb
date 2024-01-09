@@ -4,7 +4,7 @@
   <tbody>
     <tr>
     <th>登録情報</th>
-    <td><%= link_to "編集する", customer_session_path, class: 'btn btn-sm btn-success' %></td>
+    <td><%= link_to "編集する", public_customers_information_edit_path, class: 'btn btn-sm btn-success' %></td>
     </tr>
   </tbody>
 </table>
@@ -42,11 +42,11 @@
   <tbody>
     <tr>
     <th>配送先</th>
-    <td><%= link_to "一覧を見る", orders_path, class: 'btn btn-sm btn-primary' %></td>
+    <td><%= link_to "一覧を見る", public_orders_path, class: 'btn btn-sm btn-primary' %></td>
     </tr>
     <tr>
     <th>注文履歴</th>
-    <td><%= link_to "一覧を見る", orders_path, class: 'btn btn-sm btn-primary' %></td>
+    <td><%= link_to "一覧を見る", public_orders_path, class: 'btn btn-sm btn-primary' %></td>
     </tr>
   </tbody>
 </table>

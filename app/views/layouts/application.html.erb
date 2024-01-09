@@ -13,9 +13,10 @@
 <div class=container>
   <body>
     <header>
-    
+    <h1>LOGO</h1>
       <% if customer_signed_in? %>
-        <%= link_to "マイページ", public_customers_mypage_path(@customer) %>
+
+        <%= link_to "マイページ", public_customers_mypage_path %>
 
         <%= link_to "商品一覧", public_items_path %>
 
@@ -23,9 +24,21 @@
 
         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
 
+      <% elsif admin_signed_in? %>
+
+        <%= link_to "商品一覧", admin_items_path %>
+
+        <%= link_to "会員一覧", admin_customers_path %>
+
+        <%= link_to "注文履歴一覧", top_path %>
+
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+
       <% else %>
 
         <%= link_to "About", about_path %>
+
+        <%= link_to "商品一覧", public_items_path %>
 
         <%= link_to "新規登録", new_customer_registration_path %>
 
@@ -36,5 +49,4 @@
     <%= yield %>
   </body>
   </div>
-
 </html>
