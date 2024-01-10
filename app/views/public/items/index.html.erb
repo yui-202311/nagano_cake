@@ -5,13 +5,22 @@
             <td><h2>商品一覧</h2></td>
             <th><h4>(全<%= @total_item %>件)</h4></th>
         </tr>
-            <% @items.each do |item| %>
+        <% @items.each do |item| %>
         <tr>
-            <td><%= image_tag item_image, size: "20x20" %></td>
+        <% if item.image.attached? %>
+            <td><%= image_tag item.image, size: "200x150" %></td>
+        <% else %>
+            <td><%= image_tag 'no_image', size: "200x150" %></td>
+        <% end %>
             <td><%= item.name %></td>
             <td><%= item.price %></td>
-        </tr>
+            <td><%= link_to "詳細を見る", public_item_path(item), class: 'btn btn-success' %></td>
+        </tr> 
         <% end %>
     </tbody>
 </table>
+
+<%= paginate @items %>
+
+
 
