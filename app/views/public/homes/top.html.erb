@@ -11,19 +11,16 @@
       <% @items.each do |item| %>
 
       <% if item.image.attached? %>
-        <td><%= image_tag item.image, size: "200x200" %>
-          <p><%= item.name %></p>
-          <p><%= item.price %></p>
-        </td>
-      <% else %>
-        <td><%= image_tag 'no_image', size: "200x200" %>
-          <p><%= item.name %></p>
-          <p><%= item.price %></p>
-        </td>
+            <td><%= image_tag item.image, size: "200x150" %></td>
+        <% else %>
+            <td><%= image_tag 'no_image', size: "200x150" %></td>
+        <% end %>
+            <td><%= item.name %></td>
+            <td><%= item.price %></td>
       <% end %>
     </tr>
   </thead>
 </table>
 
-<% end %>
+<%= paginate @items %>
 
