@@ -1,47 +1,56 @@
 <h3>会員情報編集</h3>
-  <%= form_with model: @customer_session_path do |f| %>
+
+<% if @customer.errors.any? %>
+  <%= @customer.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @customer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+  <%= form_with model: @customer, url: public_customers_information_path do |f| %>
 
   <table>
-    <td>名前　(<%= f.label :姓 %>)
-    <%= f.text_field :last_name, autofocus: true, id:"inputName" %>
+    <td>名前　(<%= f.label :姓 %>)</td>
+    <td><%= f.text_field :last_name, autofocus: true, id:"inputName" %></td>
 
-    (<%= f.label :名 %>)
-    <%= f.text_field :first_name, autofocus: true, id:"inputName" %></td>
+    <td>(<%= f.label :名 %>)</td>
+    <td><%= f.text_field :first_name, autofocus: true, id:"inputName" %></td>
   </table>
 
   <table>
-    <td>フリガナ　(<%= f.label :セイ %>)
-    <%= f.text_field :last_name_kana, autofocus: true, id:"inputName" %>
+    <td>フリガナ　(<%= f.label :セイ %>)</td>
+    <td><%= f.text_field :last_name_kana, autofocus: true, id:"inputName" %></td>
 
-    (<%= f.label :メイ %>)
-    <%= f.text_field :first_name_kana, autofocus: true, id:"inputName" %></td>
-  
+    <td>(<%= f.label :メイ %>)</td>
+    <td><%= f.text_field :first_name_kana, autofocus: true, id:"inputName" %></td>
   </table>
 
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :郵便番号 %>（ハイフンなし）
-    <%= f.text_field :postal_code, autofocus: true %>
-  </div>
+  <table>
+    <td><%= f.label :メールアドレス %></td>
+    <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+  </table>
 
-  <div class="field">
-    <%= f.label :住所 %>
-    <%= f.text_field :address, autofocus: true, size: "50x10" %>
-  </div>
+  <table>
+    <td><%= f.label :郵便番号 %>（ハイフンなし）</td>
+    <td><%= f.text_field :postal_code, autofocus: true %></td>
+  </table>
 
-  <div class="field">
-    <%= f.label :電話番号 %>（ハイフンなし）
-    <%= f.text_field :telephone_number, autofocus: true, id:"inputName" %>
-  </div>
-  
+  <table>
+    <td><%= f.label :住所 %></td>
+    <td><%= f.text_field :address, autofocus: true, size: "50x10" %></td>
+  </table>
+
+  <table>
+    <td><%= f.label :電話番号 %>（ハイフンなし）</td>
+    <td><%= f.text_field :telephone_number, autofocus: true, id:"inputName" %></td>
+  </table>
+
   <%= f.submit "編集内容を保存", class: 'btn btn-success' %>
 
   <% end %>
-  
+
   <%= link_to "退会する", public_customers_withdrawal_path, class: 'btn btn-danger' %>
-  
-  
+

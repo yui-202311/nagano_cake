@@ -1,6 +1,20 @@
-<h4>商品詳細</h4>
+<table>
+    <tbody>
+        <tr>
+<% if @item.image.attached? %>
+        <td><%= image_tag @item.image, size: "200x150" %></td>
+    <% else %>
+        <td><%= image_tag 'no_image', size: "200x150" %></td>
+    <% end %>
+        <th><%= @item.name %></th>
+        <td><%= @item.introduction %></td>
+        <td><%= (@item.price*1.1).floor %>(税込)</td>
+        </tr>
+    </tbody>
+</table>
 
-<p><%= @item.name %></p>
-<p><%= @item.introduction %></p>
-<p><%= (@item.price*1.1).floor %>円<br>
-(<%= @item.price %>)円</p>
+<%= form_with model: @cart_item, url: public_cart_items_path do |f| %>
+<%= f.submit "カートに入れる", class: 'btn btn-success' %>
+<% end %>
+
+

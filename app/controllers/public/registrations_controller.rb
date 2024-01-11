@@ -9,14 +9,8 @@ def configure_sign_up_params
 end
 
 def after_sign_in_path_for(resource)
-    case resource
-    when Admin
-      top_path
-    when Customer
-      root_path
-    else
-      root_path
-    end
+    flash[:notice] = "新規登録しました"
+    root_path
 end
 
 def edit
@@ -24,7 +18,6 @@ def edit
 end
 
 def update
-  
 end
 
   # GET /resource/sign_up

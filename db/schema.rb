@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2024_01_07_132858) do
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "first_name_kana", null: false
-    t.string "last_name_kana", null: false
+    t.string "first_name_kana", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
     t.string "telephone_number", null: false
