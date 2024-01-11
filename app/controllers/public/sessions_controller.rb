@@ -5,35 +5,28 @@ class Public::SessionsController < Devise::SessionsController
 before_action :customer_state, only: [:create]
 
 def after_sign_in_path_for(resource)
-  case resource
-  when Admin
-    top_path
-  when Customer
+    flash[:notice] = "ログインしました"
     root_path
-  else
+end
+
+def after_sign_out_path_for(resource)
+    flash[:notice] = "ログアウトしました"
     root_path
-  end
 end
 
 private
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:name, :email])
-  end
-  
   def customer_state
     customer = Customer.find_by(email: params[:customer][:email])
     return if customer.nil?
     return unless customer.valid_password?(params[:customer][:password])
-    return if customer.is_active
     if !customer.is_active
+      flash[:notice] = "既に退会しています"
     redirect_to new_customer_registration_path
     end
   end
-  
 
-# before_action customer_state if: :is_active
-# @customer = current.user
+
 
 # private
 # def customer_state
