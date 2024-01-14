@@ -13,12 +13,17 @@
     </tr>
   </thead>
 
+
   <tbody>
     <% @cart_items.each do |cart_item| %>
-    <%= form_with model: cart_item, url: public_cart_items_path do |f| %>
+    <%= form_with model: cart_item, url: public_orders_confirm_path do |f| %>
     <% @total += cart_item.subtotal %>
+
     <tr>
-      <td><%= cart_item.item.name %></td>
+      <td>
+        <%#= image_tag cart_item.image, size: "10x10" %>
+        <%= cart_item.item.name %>
+      </td>
       <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
       <td>
         <%= f.select :amount, *[1..5], value: cart_item.amount %>
