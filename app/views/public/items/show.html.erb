@@ -8,7 +8,7 @@
     <% end %>
         <th><%= @item.name %></th>
         <td><%= @item.introduction %></td>
-        <td><%= (@item.price*1.1).floor %>(税込)</td>
+        <td>¥<%= (@item.price*1.1).floor.to_s(:delimited) %>(税込)</td>
         </tr>
     </tbody>
 </table>
