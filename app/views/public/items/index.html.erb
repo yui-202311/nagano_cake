@@ -21,7 +21,7 @@
             </td>
         <% end %>
             <td><%= item.name %></td>
-            <td><%= item.price %></td>
+            <td><%= item.price.to_s(:delimited) %></td>
         <% end %>
         </tr>
     </tbody>
