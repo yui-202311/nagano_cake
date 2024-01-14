@@ -35,7 +35,6 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  devise_for :users
 
   # resources public, only: [:create, :index, :show, :edit, :update, :destroy]
   # resources :admin, only: [:create, :new, :destroy]
