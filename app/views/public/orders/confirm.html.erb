@@ -10,39 +10,50 @@
       <td></td>
     </tr>
   </thead>
-
-    <tr>
-      <td>送料</td>
-      <td></td>
-      <td>商品合計</td>
-      <td></td>
-      <td>請求金額</td>
-      <td></td>
-    </tr>
-
+  <%= @cart_items.each do |cart_item| %>
+      <%= form_with model: @order, url: public_orders_complete_path do |f| %>
+        <%# @total += order.subtotal %>
   <tbody>
-    <% @orders.each do |order| %>
-    <%= form_with model: order, url: public_orders_path do |f| %>
-    <% @total += order.subtotal %>
-
     <tr>
       <td>
-        <%#= image_tag order.image, size: "10x10" %>
-        <%= order.item.name %>
+        <%= image_tag cart_item.item.image, size: "150x100" %>
+        <%= cart_item.item.name %>
       </td>
-      <td><%= order.item.with_tax_price.to_s(:delimited) %></td>
-      <td><%= order.item.amount %></td>
-      <td><%= order.subtotal.to_s(:delimited) %></td>
+      <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+      <td><%#= cart_item.item.amount %></td>
+      <td><%= cart_item.subtotal.to_s(:delimited) %></td>
     </tr>
-    <% end %>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 
-<div class="font-weight-bold">
-  <label for="order_id">支払方法</label>
-</div>
+  <table border="1" cellpadding="5">
+    <tr>
+      <td>送料</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>商品合計</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>請求金額</td>
+      <td></td>
+    </tr>
 
-<div class="font-weight-bold">
-  <label for="order_id">お届け先</label>
-</div>
+
+<table>
+  <tr>
+    <th>支払方法</th>
+    <td><%= @order.payment_method %></td>
+  </tr>
+  <tr>
+    <th>お届け先</th>
+    <td>
+    <%= @order.postal_code %>
+    <%= @order.address %>
+    <%= @order.name %>
+     </td>
+  </tr>
+</table>
