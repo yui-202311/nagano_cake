@@ -1,9 +1,9 @@
 <h3>商品詳細</h3>
 
     <% if @item.image.attached? %>
-      <%= image_tag @item.image, size: "100x100" %>
+      <%= image_tag @item.image, size: "250x200" %>
     <% else %>
-      <%= image_tag 'no_image', size: "100x100" %>
+      <%= image_tag 'no_image', size: "250x200" %>
     <% end %>
 <table>
   <tbody>
@@ -20,8 +20,8 @@
     <tr>
       <th>税込価格<br>
       （税抜価格）</th>
-      <td><%= (@item.price*1.1).floor %><br>
-      (<%= @item.price %>)</td>
+      <td><%= (@item.price*1.1).floor.to_s(:delimited) %><br>
+      (<%= @item.price.to_s(:delimited) %>)</td>
     </tr>
   </tbody>
 </table>

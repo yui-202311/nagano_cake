@@ -3,7 +3,24 @@
 <div class="font-weight-bold">
   <label for="order_id">支払方法</label>
 </div>
+<%= form_with model: @order, url: new_public_order_path do |f| %>
+  <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+  <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %><br>
+  
+  <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+  <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
 
 <div class="font-weight-bold">
   <label for="order_id">お届け先</label>
 </div>
+
+  <%= f.radio_button :address_type, "customer_address" %>
+  <%= f.label :address_type, "ご自身の住所" %><br>
+
+  <%= f.radio_button :address_type, "registered_address" %>
+  <%= f.label :address_type, "登録済み住所から選択" %><br>
+  
+  <%= f.radio_button :address_type, "new_customer_address" %>
+  <%= f.label :address_type, "新しいお届け先" %>
+
+<% end %>
