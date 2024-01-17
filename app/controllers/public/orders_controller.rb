@@ -32,30 +32,33 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
-    @order.save
-    current_member.cart_items.each do |cart_item|
-    @ordered_item = OrderedItem.new
-    @ordered_item.item_id = cart_item.item_id #商品idを注文商品idに代入
-    @ordered_item.amount = cart_item.amount #商品の個数を注文商品の個数に代入
-    @ordered_item.tax_included_price = (cart_item.item.price*1.08).floor #消費税込みに計算して代入
-    @ordered_item.order_id =  @order.id #注文商品に注文idを紐付け
-    @ordered_item.save #注文商品を保存
-  end
-    current_customer.cart_items.destroy_all #カートの中身を削除
-    redirect_to public_orders_complete_path
+      @order = Order.new(order_params)
+      @order.customer_id = current_customer.id
+      @order.save!
+    current_customer.cart_items.each do |cart_item|
+      @order_details = OrderDetail.new
+      @order_details.item_id = cart_item.item_id
+      @order_details.amount = cart_item.amount
+      @order_details.price = (cart_item.item.price*1.08).floor
+      @order_details.order_id = @order.id
+      @order_details.save
+    end
+      items = current_customer.cart_items
+      items.destroy_all
+      redirect_to public_orders_complete_path
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders
   end
 
   def show
+    @order = Order.find(params[:id])
+    @total = 0
   end
 
   def order_params
-    params.require(:order).permit(:customer_id, :name, :address, :postal_code, :total_payment,
+    params.require(:order).permit(:customer_id, :name, :address, :postal_code,
                                   :payment_amount, :addrress_type, :payment_method, :postage)
   end
 end

@@ -1,26 +1,29 @@
-<p>ようこそ、ながのCAKEへ！<br>
-このサイトは、ケーキ販売のECサイトになります。<br>
-会員でない方も商品の閲覧はできますが、<br>
-購入には会員登録が必要になります。</p>
+<div class="container px-5 px-sm-0">
+  
+    ようこそ、ながのCAKEへ！<br>
+    このサイトは、ケーキ販売のECサイトになります。<br>
+    会員でない方も商品の閲覧はできますが、<br>
+    購入には会員登録が必要になります。
+  
+    <h2>新着商品</h2>
 
-<h2>新着商品</h2>
-
-<table>
-  <thead>
-    <tr>
+    <div class="d-flex justify-center flex-wrap">
       <% @items.each do |item| %>
-
-      <% if item.image.attached? %>
-            <td><%= image_tag item.image, size: "200x150" %></td>
+        <div class="m-3">
+        <% if item.image.attached? %>
+          <div>
+            <%= image_tag item.image, size: "200x150" %>
+          </div>
         <% else %>
-            <td><%= image_tag 'no_image', size: "200x150" %></td>
+          <div>
+            <%= image_tag 'no_image', size: "200x150" %>
+          </div>
         <% end %>
-            <td><%= item.name %></td>
-            <td><%= item.price %></td>
+          <div><%= item.name %></div>
+          <div>¥<%= item.price.to_s(:delimited) %></div>
+        </div>
       <% end %>
-    </tr>
-  </thead>
-</table>
-
-<%= paginate @items %>
+    </div>
+    <%= paginate @items %>
+</div>
 
