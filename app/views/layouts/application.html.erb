@@ -1,62 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NaganoCake</title>
+    <title>WorkGithub</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <script src="https://kit.fontawesome.com/cc96e0b592.js" crossorigin="anonymous"></script>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-<div class=container>
   <body>
-    <header>
-    <h1>Nagano Cake</h1>
-      <% if customer_signed_in? %>
-
-        <%= link_to "マイページ", public_customers_mypage_path %>
-
-        <%= link_to "商品一覧", public_items_path %>
-
-        <%= link_to "カート", public_cart_items_path %>
-
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-
-      <% elsif admin_signed_in? %>
-
-        <%= link_to "商品一覧", admin_items_path %>
-
-        <%= link_to "会員一覧", admin_customers_path %>
-
-        <%= link_to "注文履歴一覧", top_path %>
-
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-
-      <% else %>
-
-        <%= link_to "About", about_path %>
-
-        <%= link_to "商品一覧", public_items_path %>
-
-        <%= link_to "新規登録", new_customer_registration_path %>
-
-        <%= link_to  "ログイン", new_customer_session_path %>
-
-      <% end %>
-    </header>
-    <%= flash[:notice] %>
     <%= yield %>
   </body>
-  </div>
-  
-  <footer>
-      <div class="container mt-5">
-        <div class="row">
-          <div class="mx-auto">CopyRight Infratop.inc
-          </div>
-        </div>
-      </div>
-    </footer>
 </html>
