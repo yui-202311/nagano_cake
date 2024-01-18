@@ -11,8 +11,8 @@
   
   <tbody>
     <tr>
-      <td><%= current_customer.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-      <td><%= current_customer.cart_items.amount %></td>
+      <td><%= @customer.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+      <td><%#= @customer.order_details.amount %></td>
       <td><%#= current_customer %></td>
     </tr>
   </tbody>
