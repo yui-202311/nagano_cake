@@ -1,23 +1,31 @@
-<table>
-    <tbody>
-        <tr>
-    <% if @item.image.attached? %>
-        <td><%= image_tag @item.image, size: "200x150" %></td>
-    <% else %>
-        <td><%= image_tag 'no_image', size: "200x150" %></td>
-    <% end %>
-        <th><%= @item.name %></th>
-        <td><%= @item.introduction %></td>
-        <td>¥<%= (@item.price*1.1).floor.to_s(:delimited) %>(税込)</td>
-        </tr>
-    </tbody>
-</table>
+<div class="container px-5 px-sm-0">
+    <div class="d-flex justify-center">
+        <div class="m-3">
+        <% if @item.image.attached? %>
+            <div>
+                <%= image_tag @item.image, size: "200x150" %>
+            </div>
+        <% else %>
+            <div>
+                <%= image_tag 'no_image', size: "200x150" %>
+            </div>
+        <% end %>
+        </div>
+        <div>
+            <h4 class="font-weight-bold"><%= @item.name %></h4>
+            <h5><%= @item.introduction %></h5>
+            <h5>¥<%= (@item.price*1.1).floor.to_s(:delimited) %>(税込)</h5>
+        </div>
+    </div>
 
-<%= form_with model: @cart_item, url: public_cart_items_path do |f| %>
-<p>数量を選択してください</p>
-<%= f.hidden_field :item_id, :value => @item.id %>
-<%= f.select :amount, *[1..5] %>
-<%= f.submit "カートに入れる", class: 'btn btn-success' %>
-<% end %>
+    <%= form_with model: @cart_item, url: public_cart_items_path do |f| %>
+        <div class="font-weight-bold">数量を選択してください</div>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+        <div class="mt-3">
+            <%= f.select :amount, *[1..10] %>
+            <%= f.submit "カートに入れる", class: 'btn btn-success' %>
+        </div>
+    <% end %>
+</div>
 
 
