@@ -1,4 +1,6 @@
-<h4>注文情報入力</h4>
+<div class="container">
+
+<h4>【注文情報入力】</h4>
 
 <h5 class="font-weight-bold">支払方法</h5>
 
@@ -25,22 +27,28 @@
     <%= f.radio_button :address_type, 2 %>
     <%= f.label :new_customer_address, "新しいお届け先" %>
 
-  <table>
-    <tr>
-      <td class="col-3"><%= f.label :postal_code, "郵便番号（ハイフンなし）" %></td>
-      <td><%= f.text_field :postal_code, autofocus: true, placeholder: "0000000" %></td>
-    </tr>
+  <div class="field">
+    <div class="col-3">
+      <span class="bg-info"><%= f.label :postal_code, "郵便番号（ハイフンなし）" %></span><br>
+      <%= f.text_field :postal_code, autofocus: true, placeholder: "0000000" %>
+    </div>
+  </div>
 
-    <tr>
-      <td class="col-3"><%= f.label :address, "住所" %></td>
-      <td><%= f.text_field :address, autofocus: true, placeholder:"東京都渋谷区代々木神園町0-0", size: "50x10" %></td>
-    </tr>
+    <div class="field">
+      <div class="col-3">
+      <span class="bg-info"><%= f.label :address, "住所" %></span><br>
+      <%= f.text_field :address, autofocus: true, placeholder:"東京都渋谷区代々木神園町0-0", size: "50x10" %>
+      </div>
+    </div>
 
-    <tr>
-      <td class="col-3"><%= f.label :name, "宛名" %></td>
-      <td><%= f.text_field :name, autofocus: true, placeholder: "令和道子" %></td>
-    </tr>
-  </table>
+  <div class="field">
+    <div class="col-3">
+      <span class="bg-info"><%= f.label :name, "宛名" %></span><br>
+      <%= f.text_field :name, autofocus: true, placeholder: "令和道子" %></div>
+    </div>
+  </div>
+</div>
+
 
 <div class="container mt-5">
   <div class="row">

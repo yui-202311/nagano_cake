@@ -1,3 +1,4 @@
+<div class="container">
 <h3>会員情報編集</h3>
 
 <% if @customer.errors.any? %>
@@ -54,4 +55,5 @@
   <%= link_to "退会する", public_customers_withdrawal_path, class: 'btn btn-danger' %>
 
   <% end %>
+</div>
 
