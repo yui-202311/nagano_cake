@@ -27,12 +27,12 @@
     <%= f.radio_button :address_type, 2 %>
     <%= f.label :new_customer_address, "新しいお届け先" %>
 
-  <div class="field">
-    <div class="col-3">
-      <span class="bg-info"><%= f.label :postal_code, "郵便番号（ハイフンなし）" %></span><br>
-      <%= f.text_field :postal_code, autofocus: true, placeholder: "0000000" %>
+    <div class="field">
+      <div class="col-3">
+        <span class="bg-info"><%= f.label :postal_code, "郵便番号（ハイフンなし）" %></span><br>
+        <%= f.text_field :postal_code, autofocus: true, placeholder: "0000000" %>
+      </div>
     </div>
-  </div>
 
     <div class="field">
       <div class="col-3">
@@ -41,13 +41,13 @@
       </div>
     </div>
 
-  <div class="field">
-    <div class="col-3">
-      <span class="bg-info"><%= f.label :name, "宛名" %></span><br>
-      <%= f.text_field :name, autofocus: true, placeholder: "令和道子" %></div>
+    <div class="field">
+      <div class="col-3">
+        <span class="bg-info"><%= f.label :name, "宛名" %></span><br>
+        <%= f.text_field :name, autofocus: true, placeholder: "令和道子" %></div>
+      </div>
     </div>
-  </div>
-</div>
+
 
 
 <div class="container mt-5">

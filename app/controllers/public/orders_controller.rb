@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+  
   def new
     @order = Order.new
   end
@@ -25,10 +27,6 @@ class Public::OrdersController < ApplicationController
     end
      # byebug
     @cart_items = current_customer.cart_items.all
-  end
-
-
-  def complete
   end
 
   def create
