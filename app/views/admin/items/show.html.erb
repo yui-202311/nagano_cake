@@ -1,4 +1,5 @@
-<h3>商品詳細</h3>
+<div class="container">
+  <h3>【商品詳細】</h3>
 
     <% if @item.image.attached? %>
       <%= image_tag @item.image, size: "250x200" %>
@@ -21,9 +22,10 @@
       <th>税込価格<br>
       （税抜価格）</th>
       <td>¥<%= (@item.price*1.1).floor.to_s(:delimited) %><br>
-      ¥(<%= @item.price.to_s(:delimited) %>)</td>
+      (¥<%= @item.price.to_s(:delimited) %>)</td>
     </tr>
   </tbody>
 </table>
 
 <%= link_to "編集する", edit_admin_item_path(@item.id), class: 'btn btn-success' %>
+</div>

@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     post "orders/confirm" => "orders#confirm"
     get "orders/complete" => "orders#complete"
     resources :orders, only: [:new, :create, :index, :show]
-    resources :addresses, only: [:index, :create, :update, :delete, :edit]
+    resources :addresses, only: [:index, :create, :update, :destroy, :edit]
   end
 
   devise_for :customers, skip: [:passwords], controllers: {

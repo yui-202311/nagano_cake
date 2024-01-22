@@ -14,7 +14,7 @@ class Public::OrdersController < ApplicationController
       @order.name = current_customer.last_name + current_customer.first_name
       @order.customer_id = current_customer
     elsif params[:order][:address_type] == "1"
-      ship = Address.find(params[:order][:customer_id])
+      ship = Address.find(params[:order][:address_id])
       @order.postal_code = ship.postal_code
       @order.address = ship.address
       @order.name = ship.name
@@ -37,7 +37,7 @@ class Public::OrdersController < ApplicationController
       @order_details = OrderDetail.new
       @order_details.item_id = cart_item.item_id
       @order_details.amount = cart_item.amount
-      @order_details.price = (cart_item.item.price*1.08).floor
+      @order_details.price = (cart_item.item.price*1.1).floor
       @order_details.order_id = @order.id
       @order_details.save
     end

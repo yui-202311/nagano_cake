@@ -1,4 +1,5 @@
-<h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
+<div class="container">
+  <h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
 
 <% if @customer.errors.any? %>
   <%= @customer.errors.count %>件のエラーが発生しました
@@ -26,7 +27,7 @@
     </tr>
     
     <tr>
-      <td>フリガナ</td>
+      <th>フリガナ</td>
       <td>
       <%= f.text_field :last_name_kana, autofocus: true, id:"inputName" %>
       <%= f.text_field :first_name_kana, autofocus: true, id:"inputName" %>
@@ -49,7 +50,7 @@
     </tr>
 
     <tr>
-      <td>メールアドレス</td>
+      <th>メールアドレス</td>
       <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
     </tr>
 
@@ -59,5 +60,5 @@
   </table>
   
   <%= f.submit "変更を保存", class: 'btn btn-success' %>
-
+</div>
 <% end %>
