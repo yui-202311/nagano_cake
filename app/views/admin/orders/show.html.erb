@@ -1,6 +1,7 @@
 <div class="container">
   <h4>【注文履歴詳細】</h4>
 
+  <%= form_with model: @cart_item, url: public_cart_items_path do |f| %>
     <table>
       <tr>
         <th>購入者</th>
@@ -26,7 +27,7 @@
       </tr>
       <tr>
         <th>注文ステータス</th>
-        <td><%= %></td>
+        <td><%= %><%= f.submit "更新", class: 'btn btn-sm btn-success' %></td>
       </tr>
     </table>
     
@@ -50,12 +51,13 @@
               <td><%= order_detail.price.to_s(:delimited) %></td>
               <td><%= order_detail.amount %></td>
               <td><%= order_detail.price.to_s(:delimited) %></td>
-              <td><%= %></td>
+              <td><%= %><%= f.submit "更新", class: 'btn btn-sm btn-success' %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
+  <% end %>
   
     <div class="col-md-4">
       <table style="width:80%">

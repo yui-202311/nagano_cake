@@ -6,5 +6,8 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @customer = @order.customer
   end
+  
+  def update
+  end
 
 end
