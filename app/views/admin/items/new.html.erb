@@ -32,11 +32,16 @@
       </tr>
       <tr>
         <td>販売ステータス</td>
-        <td><%= f.radio_button :status, :value %><%= f.label :status, "販売中" %>
-        <%= f.radio_button :status, :value %><%= f.label :status, "販売停止中" %></td>
+        <td>
+          <%= f.radio_button :status, :value %>
+          <%= f.label :status, "販売中" %>
+          <%= f.radio_button :status, :value %>
+          <%= f.label :status, "販売停止中" %>
+        </td>
       </tr>
     </tbody>
   </table>
+
     <%= f.submit '新規登録', class: 'btn btn-success' %>
 <% end %>
 </div>
