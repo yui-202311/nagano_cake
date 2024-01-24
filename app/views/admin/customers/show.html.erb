@@ -1,5 +1,5 @@
-<div class="container">
-  <h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4>
+<div class="container mt-2">
+  <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
 
   <table class="table">
     <tr>
@@ -32,7 +32,13 @@
     </tr>
     <tr>
       <th>会員ステータス</th>
-      <td></td>
+      <td>
+        <% if @customer.is_active %>
+          <div class="text-success">有効</div>
+        <% else %>
+          <div class="text-secondary">退会</div>
+        <% end %>
+      </td>
     </tr>
   </table>
 

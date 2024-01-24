@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-2">
 <h4>【商品一覧】</h4>
 
   <table class="table">
@@ -7,6 +7,7 @@
         <th>商品ID</th>
         <th>商品名</th>
         <th>税抜価格</th>
+        <th>販売ステータス</th>
       </tr>
     </thead>
     <tbody>
@@ -19,10 +20,17 @@
           <% end %>
         </td>
         <td><%= item.price.to_s(:delimited) %></td>
+        <td>
+          <% if item.is_active %>
+            <div class="text-success">販売中</div>
+          <% else %>
+            <div class="text-secondary">販売停止中</div>
+          <% end %>
+        </td>
       </tr>
       <% end %>
     </tbody>
   </table>
-  
+
 <%= paginate @items %>
 </div>

@@ -1,5 +1,5 @@
-<div class="container">
-  <h4>【会員一覧】</h4>
+<div class="container mt-2">
+  <h3>【会員一覧】</h3>
 
 <table class="table">
   <thead>
@@ -7,7 +7,7 @@
       <th>会員ID</th>
       <th>氏名</th>
       <th>メールアドレス</th>
-      <th>ステータス</th>
+      <th>会員ステータス</th>
     </tr>
   </thead>
   <tbody>
@@ -21,11 +21,11 @@
       </td>
       <td><%= customer.email %></td>
       <td>
-        <%#= if customer.is_active true %>
-        <%#= "有効", class:'success' %>
-        <%#= if customer.is_active false %>
-        <%#= "退会", class:'secondary' %>
-        <%# end %>
+        <% if customer.is_active %>
+          <div class="text-success">有効</div>
+        <% else %>
+          <div class="text-secondary">退会</div>
+        <% end %>
       </td>
     </tr>
     <% end %>
