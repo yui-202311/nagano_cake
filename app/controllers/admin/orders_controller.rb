@@ -8,13 +8,18 @@ class Admin::OrdersController < ApplicationController
   end
   
   def update
+       @order = Order.find(params[:id])
+       @order_details = @order.order_details
+    if @order.update(order_params)
+       @order_details.update_all()
+    end
+       redirect_to admin_order_path(@order)
   end
   
   private
 
-  def customer_params
-  params.require(:order).permit(:email, :first_name, :last_name, :first_name_kana, :first_name_kana,
-                                  :postal_code, :address, :telephone_number, :status, :making_status)
+  def order_params
+  params.require(:order).permit(:status)
   end
-
+  
 end
