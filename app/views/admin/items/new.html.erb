@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-2">
   <h3>【商品新規登録】</h3>
 
 <% if @item.errors.any? %>
@@ -33,11 +33,10 @@
       <tr>
         <td>販売ステータス</td>
         <td>
-          <%= f.radio_button :status, :value %>
-          <%= f.label :status, "販売中" %>
-          <%= f.radio_button :status, :value %>
-          <%= f.label :status, "販売停止中" %>
-        </td>
+          <%= f.radio_button :is_active, true %>
+          <%= f.label :is_active, "販売中" %>
+          <%= f.radio_button :is_active, false %>
+          <%= f.label :is_active, "販売停止中" %>
       </tr>
     </tbody>
   </table>

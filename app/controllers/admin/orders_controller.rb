@@ -9,5 +9,12 @@ class Admin::OrdersController < ApplicationController
   
   def update
   end
+  
+  private
+
+  def customer_params
+  params.require(:order).permit(:email, :first_name, :last_name, :first_name_kana, :first_name_kana,
+                                  :postal_code, :address, :telephone_number, :status, :making_status)
+  end
 
 end

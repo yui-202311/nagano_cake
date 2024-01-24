@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-2">
   <h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
 
 <% if @customer.errors.any? %>
@@ -50,10 +50,10 @@
     <tr>
       <th>会員ステータス</th>
       <td>
-        <%= f.radio_button :customer_status, checked: :true %>
-        <%= f.label :customer_status_is_active, "有効" %>
-        <%= f.radio_button :customer_status, :value %>
-        <%= f.label :customer_status_is_delated, "退会" %>
+        <%= f.radio_button :is_active, true %>
+        <%= f.label :is_active, "有効" %>
+        <%= f.radio_button :is_active, false %>
+        <%= f.label :is_active, "退会" %>
       </td>
     </tr>
   </table>
