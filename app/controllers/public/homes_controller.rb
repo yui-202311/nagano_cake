@@ -5,6 +5,4 @@ class Public::HomesController < ApplicationController
     @items = Item.page(params[:page])
   end
 
-  def about
-  end
 end

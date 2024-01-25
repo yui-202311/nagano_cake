@@ -22,7 +22,7 @@
         </tr>
         <tr>
           <td class="table-secondary">ステータス</td>
-          <td><%= %></td>
+          <td><%= @order.status_i18n %></td>
         </tr>
       </table>
     </div>
@@ -51,7 +51,7 @@
 
   <div class="row">
     <div class="col-md-12">
-      <label class="font-weight-bold">注文内容</label>
+      <label class="font-weight-bold mt-2">注文内容</label>
           <table border="1" cellpadding="5" style="width:55%">
             <thead>
               <tr>

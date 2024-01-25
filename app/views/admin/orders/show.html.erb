@@ -1,7 +1,6 @@
 <div class="container mt-2">
   <h3>【注文履歴詳細】</h3>
 
-  <%= form_with model: @cart_item, url: admin_order_path(@order), method: :patch do |f| %>
     <table>
       <tr style="width:80%">
         <th style="width:20%">購入者</th>
@@ -28,8 +27,11 @@
       <tr>
         <th>注文ステータス</th>
         <td>
-          <%#= f.select :status, options_from_collection_for_select, Order.status_i18n.key(0) "1", "2", "3", "4") %>
-          <%= f.submit "更新", class: 'btn btn-sm btn-success' %>
+          <%= form_with model: @order, url: admin_order_path(@order), method: :patch do |f| %>
+            <%= f.select :status, Order.statuses_i18n.invert %>
+            <%= f.submit "更新", class: 'btn btn-sm btn-success' %>
+          <% end %>
+
         </td>
       </tr>
     </table>
@@ -56,8 +58,8 @@
               <td><%= order_detail.price.to_s(:delimited) %></td>
               <td>
                 <%= form_with model: order_detail, url:admin_order_detail_path(order_detail), method: :patch do |f| %>
-                <%#= f.select :making_status, options_from_collection_for_select(OrderDetail.all, "0", "1", "2", "3") %>
-                <%= f.submit "更新", class: 'btn btn-sm btn-success' %>
+                  <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
+                  <%= f.submit "更新", class: 'btn btn-sm btn-success' %>
                 <% end %>
               </td>
             </tr>
@@ -65,7 +67,6 @@
         </tbody>
       </table>
     </div>
-  <% end %>
 
     <div class="col-md-4">
       <table style="width:80%">
