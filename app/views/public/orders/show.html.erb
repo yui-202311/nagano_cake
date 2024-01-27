@@ -11,9 +11,9 @@
         </tr>
         <tr>
           <td class="table-secondary">配送先</td>
-          <td>〒<%= @order.customer.postal_code %><br>
-                <%= @order.customer.address %><br>
-                <%= @order.customer.last_name %><%= @order.customer.first_name %>
+          <td>〒<%= @order.postal_code %><br>
+                <%= @order.address %><br>
+                <%= @order.name %>
           </td>
         </tr>
         <tr>
