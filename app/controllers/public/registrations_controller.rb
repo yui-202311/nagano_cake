@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
-  
+
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -11,14 +11,11 @@ end
 
 def after_sign_in_path_for(resource)
     flash[:notice] = "新規登録しました"
-    root_path
+    public_customers_mypage_path
 end
 
 def edit
   @customer = Customer.find(params[:id])
-end
-
-def update
 end
 
   # GET /resource/sign_up
