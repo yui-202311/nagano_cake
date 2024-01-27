@@ -20,7 +20,6 @@
           <% @cart_items.each do |cart_item| %>
             <%= form_with model: cart_item, url: public_cart_item_path(cart_item), method: :patch do |f| %>
               <% @total += cart_item.subtotal %>
-
               <tr>
                 <td>
                   <% if cart_item.item.image.attached? %>
@@ -57,15 +56,15 @@
       </div>
     </div>
 
-      <div class="container mt-5">
-        <div class="row">
-          <div class="mx-auto">
-            <% if @cart_items.present? %>
-              <%= link_to "情報入力に進む", new_public_order_path, class: 'btn btn-success' %>
-            <% end %>
-          </div>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="mx-auto">
+          <% if @cart_items.present? %>
+            <%= link_to "情報入力に進む", new_public_order_path, class: 'btn btn-success' %>
+          <% end %>
         </div>
       </div>
-
-      <%= link_to "買い物を続ける", root_path, class: 'btn btn-primary' %>
     </div>
+
+  <%= link_to "買い物を続ける", root_path, class: 'btn btn-primary' %>
+</div>
